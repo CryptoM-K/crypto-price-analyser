@@ -7,21 +7,21 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class TestResourceCoinloreCrypto {
+public class TestResourceGit {
 
     @Test
     public void testStatusEndpoint() {
         given()
-                .when().get("coin/status")
+                .when().get("git/status")
                 .then()
                 .statusCode(200)
-                .body(is("Coinlore Crypto OK"));
+                .body(is("Git OK"));
     }
 
     @Test
-    public void testCoinloreConnectivity() {
+    public void testGitConnectivity() {
         given()
-                .when().get("coin")
+                .when().get("git")
                 .then()
                 .statusCode(200);
     }
