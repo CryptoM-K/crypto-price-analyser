@@ -14,7 +14,15 @@ install-java:
 	fi
 	sudo apt-get install -y openjdk-11-jdk
 
-install-extra-tools: install-dive install-dockle install-trivy install-docker-slim
+install-extra-tools: install-k3d install-dive install-dockle install-trivy install-docker-slim
+
+install-k3d:
+	export K3D_VERSION=5.2.2
+
+	if command -v k3d >> /dev/null; then exit 0; fi
+	wget -nc -q https://github.com/rancher/k3d/releases/download/v$${K3D_VERSION}/k3d-linux-amd64
+	chmod +x k3d-linux-amd64
+	sudo mv k3d-linux-amd64 /usr/local/bin/k3d
 
 install-dive:
 	export DIVE_VERSION=0.10.0
