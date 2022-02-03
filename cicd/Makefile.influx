@@ -1,0 +1,20 @@
+INFLUXDB_VERSION=2.0.8
+CHRONOGRAF_VERSION=1.2.1
+
+add-repo:
+	helm repo add influxdata https://helm.influxdata.com/
+
+create-default-values:
+	helm show values influxdata/influxdb2 --version $(INFLUXDB_VERSION) > chart-values/default/infludb2-$(INFLUXDB_VERSION).yaml
+	helm show values influxdata/chronograf --version $(CHRONOGRAF_VERSION)> chart-values/default/chronograf-$(CHRONOGRAF_VERSION).yaml
+
+install-secret:
+	kubectl apply -f chronograf-secret.yaml
+
+install-tick-stack: add-repo install-secret
+	helm upgrade --install -n influxdb --create-namespace influxdb2 influxdata/influxdb2 --version $(INFLUXDB_VERSION) --values chart-values/custom/influxdb2.yaml
+	helm upgrade --install -n influxdb --create-namespace chronograf influxdata/chronograf --version $(CHRONOGRAF_VERSION) --values chart-values/custom/chronograf.yaml
+
+create-config:
+	influx config create --config-name influxdb.local --host-url http://influxdb.local --token "testadmin123" --active
+	influx ping
