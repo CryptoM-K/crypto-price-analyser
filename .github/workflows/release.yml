@@ -41,10 +41,10 @@ jobs:
       working-directory: app
       run: docker build -f src/main/docker/Dockerfile.native -t ${{ github.event.inputs.name }}:${{ github.event.inputs.version }} .
     - name: Save Image
-      run: docker save -o image.tar ${{ github.event.inputs.name }}.tar
-    - name: Check image weight
+      run: docker save -o image.tar ${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+    - name: Check image size
       run: ls -hs image.tar
-    - name: Archive production artifacts
+    - name: Archive image
       uses: actions/upload-artifact@v2
       with:
         name: image.tar
