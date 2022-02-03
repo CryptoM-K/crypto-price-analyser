@@ -1,0 +1,14 @@
+[
+  {
+    "name": "ethereum",
+    "repo": "github",
+    "path": "ethereum/go-ethereum",
+    "branch": "head"
+  },
+  {
+    "name": "bitcoin",
+    "repo": "github",
+    "path": "bitcoin/bitcoin",
+    "branch": "head"
+  }
+]
