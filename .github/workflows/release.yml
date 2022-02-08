@@ -49,3 +49,36 @@ jobs:
       with:
         name: image.tar
         path: image.tar
+  push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: image.tar
+    - name: Load docker image
+      run: docker load image.tar
+    - name: Login to registry
+      env:
+        CONTAINER_REGISTRY_USERNAME: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+        CONTAINER_REGISTRY_PASSWORD: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+        CONTAINER_REGISTRY_REPOSITORY: witcherek7
+      run: docker login -u ${CONTAINER_REGISTRY_USERNAME} -p ${CONTAINER_REGISTRY_PASSWORD}
+    - name: Docker tag
+      run: >
+        docker tag 
+          ${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+          ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+    - name: Docker push
+      run: >
+        docker push ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Commit tagger
+      uses: tvdias/github-tagger@v0.0.2
+      with:
+        repo-token:  ${{ github.token }}
+        tag: ${{ github.event.inputs.version }}
+        commit-sha: ${{ github.sha }}
+    
