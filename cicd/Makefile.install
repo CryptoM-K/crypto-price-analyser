@@ -53,7 +53,7 @@ install-dive:
 	export DIVE_VERSION=0.10.0
 
 	if command -v dive; then exit 0; fi
-	wget -nc -q https://github.com/wagoodman/dive/releases/download/v$${DIVE_VERSION}_dive_$${DIVE_VERSION}_linux_amd64.tar.gz
+	wget -nc -q https://github.com/wagoodman/dive/releases/download/v$${DIVE_VERSION}/dive_$${DIVE_VERSION}_linux_amd64.tar.gz
 	mkdir dive
 	tar zxvf dive_$${DIVE_VERSION}_linux_amd64.tar.gz --directory=dive
 	chmod +x dive/dive
