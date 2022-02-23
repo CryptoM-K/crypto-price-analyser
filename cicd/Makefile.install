@@ -71,7 +71,7 @@ install-dockle:
 	chmod +x dockle/dockle
 	sudo mv dockle/dockle /usr/local/bin/dockle
 	rm -rf dockle
-	rm dockle_$${DOCKLE_VERSION}_linux_amd64.tar.gz
+	rm dockle_$${DOCKLE_VERSION}_Linux-64bit.tar.gz
 
 install-trivy:
 	export TRIVY_VERSION=0.22.0
