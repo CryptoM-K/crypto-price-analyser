@@ -15,7 +15,10 @@ install-java:
 	fi
 	sudo apt-get install -y openjdk-11-jdk
 
-install-extra-tools: install-sops install-age install-k3d install-dive install-dockle install-trivy install-docker-slim install-influx install-helm-secrets
+install-extra-tools: install-helm install-sops install-age install-k3d install-dive install-dockle install-trivy install-docker-slim install-influx install-helm-secrets
+
+install-helm:
+	curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 install-sops:
 	export VERSION=3.7.1
