@@ -1,0 +1,6 @@
+create:
+	k3d cluster create crypto \
+	--servers 1 \
+	-p "80:80@loadbalancer" \
+	-p "443:443@loadbalancer" \
+	--volume /k3s:/k3s@all

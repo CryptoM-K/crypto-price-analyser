@@ -1,0 +1,11 @@
+persistence:
+  enabled: true
+  size: 2Gi
+
+ingress:
+  enabled: true
+  tls: true
+  hostname: chronograf.local
+
+# influxdb:
+#   existingSecret: chronograf-auth

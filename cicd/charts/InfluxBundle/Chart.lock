@@ -1,0 +1,9 @@
+dependencies:
+- name: influxdb2
+  repository: https://helm.influxdata.com/
+  version: 2.0.9
+- name: chronograf
+  repository: https://helm.influxdata.com/
+  version: 1.2.1
+digest: sha256:8f7f0f944ee5a22f807e718ab16f33d98e365b9a261cbce3367eeef9dde8578f
+generated: "2022-02-10T18:32:15.84651652+01:00"

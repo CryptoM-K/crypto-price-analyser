@@ -1,0 +1,20 @@
+service:
+  type: ClusterIP
+
+persistence: 
+  size: 2Gi
+  storageClass: local-path
+
+ingress:
+  enabled: true
+  hostname: influxdb.local
+
+pdb: 
+  create: false
+
+adminUser:
+  organization: "michal-i-krzys"
+  bucket: "crypto"
+  user: "admin"
+  password: "testadmin123"
+  token: "testadmin123"

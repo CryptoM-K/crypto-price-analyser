@@ -1,0 +1,1 @@
+Value: {{ .Values.value }}

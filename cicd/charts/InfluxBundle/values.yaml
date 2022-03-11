@@ -1,0 +1,38 @@
+influxdb2:
+  service:
+    type: ClusterIP
+
+  persistence: 
+    size: 1Gi
+    #storageClass: local-path
+
+  ingress:
+    enabled: true
+    hostname: influxdb-krzwiatrzyk.cloud.okteto.net 
+
+  pdb: 
+    create: false
+
+  adminUser:
+    organization: "michal-i-krzys"
+    bucket: "crypto"
+    user: "admin"
+    password: "testadmin123"
+    token: "testadmin123"
+
+chronograf:
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 0.1
+    limits:
+      memory: 2Gi
+      cpu: 1
+  persistence:
+    enabled: true
+    size: 1Gi
+
+  ingress:
+    enabled: true
+    #tls: true
+    hostname: chronograf-krzwiatrzyk.cloud.okteto.net 
