@@ -17,6 +17,9 @@ install-java:
 
 install-extra-tools: install-kubectl install-helm install-sops install-age install-k3d install-dive install-dockle install-trivy install-docker-slim install-influx install-helm-secrets
 
+install-datree:
+	curl https://get.datree.io | /bin/bash
+
 install-kubectl:
 	curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 	chmod +x kubectl
