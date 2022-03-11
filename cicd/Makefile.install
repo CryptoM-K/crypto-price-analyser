@@ -17,6 +17,9 @@ install-java:
 
 install-extra-tools: install-kubectl install-helm install-sops install-age install-k3d install-dive install-dockle install-trivy install-docker-slim install-influx install-helm-secrets
 
+install-tilt:
+	curl -fsSL https://raw.githubusercontent.com/tilt-dev/tilt/master/scripts/install.sh | bash
+
 install-datree:
 	curl https://get.datree.io | /bin/bash
 
