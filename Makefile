@@ -10,5 +10,12 @@ test-trivy:
 install-all:
 	$(MAKE) -C cicd -f Makefile.install install-extra-tools
 
+install-ci-tools:
+	$(MAKE) -c cicd -f Makefile.install \
+	install-dive
+	install-dockle
+	install-trivy
+	install-docker-slim
+
 create-environment:
 	$(MAKE) -C cicd -f Makefile.k3d create
