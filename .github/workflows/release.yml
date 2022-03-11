@@ -62,7 +62,7 @@ jobs:
       with:
         name: image.tar
     - name: Install tools
-      run: ls && make install-ci-tools
+      run: make install-ci-tools
     - name: Load docker image
       run: docker load -i image.tar
     - name: Run Dive Test
@@ -123,9 +123,16 @@ jobs:
       run: docker login -u ${CONTAINER_REGISTRY_USERNAME} -p ${CONTAINER_REGISTRY_PASSWORD}
     - name: Docker tag
       run: >
+        echo 
+        "
         docker tag 
-          ${{ github.event.inputs.name }}:${{ github.event.inputs.version }} 
-          ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+        ${{ github.event.inputs.name }}:${{ github.event.inputs.version }} 
+        ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+        "
+        &&
+        docker tag 
+        ${{ github.event.inputs.name }}:${{ github.event.inputs.version }} 
+        ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
     - name: Docker push
       run: >
         docker push ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}

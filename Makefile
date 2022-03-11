@@ -11,10 +11,17 @@ install-all:
 	$(MAKE) -C cicd -f Makefile.install install-extra-tools
 
 install-ci-tools:
+<<<<<<< HEAD
 	$(MAKE) -C cicd -f Makefile.install \
 	install-dive \
 	install-dockle \
 	install-trivy \
+=======
+	$(MAKE) -c cicd -f Makefile.install \
+	install-dive
+	install-dockle
+	install-trivy
+>>>>>>> 7377b18... fix(release): fix concurrent jobs execution
 	install-docker-slim
 
 create-environment:
