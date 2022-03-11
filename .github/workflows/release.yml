@@ -62,7 +62,7 @@ jobs:
       with:
         name: image.tar
     - name: Install tools
-      run: ls && make install-ci-tools
+      run: make install-ci-tools
     - name: Load docker image
       run: docker load -i image.tar
     - name: Run Dive Test
