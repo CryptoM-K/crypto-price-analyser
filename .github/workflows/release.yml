@@ -124,7 +124,7 @@ jobs:
     - name: Docker tag
       run: >
         docker tag 
-          ${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
+          ${{ github.event.inputs.name }}:${{ github.event.inputs.version }} 
           ${CONTAINER_REGISTRY_REPOSITORY}/${{ github.event.inputs.name }}:${{ github.event.inputs.version }}
     - name: Docker push
       run: >
