@@ -21,6 +21,7 @@ on:
         required: true
         type: text
       push_image:
+        description: "Push Image to DockerHub"
         type: boolean
         default: 'true'
         
@@ -59,7 +60,7 @@ jobs:
       with:
         name: image.tar
     - name: Install tools
-      run: make install-ci-tools
+      run: ls && make install-ci-tools
     - name: Load docker image
       run: docker load -i image.tar
     - name: Run Dive Test
@@ -100,7 +101,7 @@ jobs:
     needs:
     - dockle-test
     - trivy-test
-    - dockle-test
+    - dive-test
     steps:
     - name: Download a single artifact
       uses: actions/download-artifact@v2

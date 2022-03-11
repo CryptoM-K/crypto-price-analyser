@@ -11,10 +11,10 @@ install-all:
 	$(MAKE) -C cicd -f Makefile.install install-extra-tools
 
 install-ci-tools:
-	$(MAKE) -c cicd -f Makefile.install \
-	install-dive
-	install-dockle
-	install-trivy
+	$(MAKE) -C cicd -f Makefile.install \
+	install-dive \
+	install-dockle \
+	install-trivy \
 	install-docker-slim
 
 create-environment:
